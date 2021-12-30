@@ -50,7 +50,7 @@ export class SvgMask extends Component<Props, State> {
   }
 
   listenerID: string
-  rafID: number
+  rafID!: number
   mask: React.RefObject<PathProps> = React.createRef()
 
   windowDimensions: ScaledSize | null = null

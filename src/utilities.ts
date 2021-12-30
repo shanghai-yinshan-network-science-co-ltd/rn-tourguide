@@ -1,5 +1,6 @@
 // @ts-ignore
 import { interpolate, separate, splitPathString, toCircle } from 'flubber'
+// @ts-ignore
 import clamp from 'lodash.clamp'
 import memoize from 'memoize-one'
 import {
