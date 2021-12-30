@@ -9,6 +9,7 @@ import {
   StyleSheet,
   View,
   ViewStyle,
+  Dimensions
 } from 'react-native'
 import { BorderRadiusObject, IStep, Labels, ValueXY } from '../types'
 import styles, { MARGIN } from './style'
@@ -189,9 +190,9 @@ export class Modal extends React.Component<ModalProps, State> {
       verticalPosition === 'bottom'
         ? tooltip.top
         : obj.top -
-          MARGIN -
-          135 -
-          (this.props.currentStep!.tooltipBottomOffset || 0)
+        MARGIN -
+        135 -
+        (this.props.currentStep!.tooltipBottomOffset || 0)
     const translateAnim = Animated.timing(this.state.tooltipTranslateY, {
       toValue,
       duration,
@@ -259,20 +260,29 @@ export class Modal extends React.Component<ModalProps, State> {
     this.props.stop()
   }
 
-  renderMask = () => (
-    <SvgMask
-      style={styles.overlayContainer}
-      size={this.state.size!}
-      position={this.state.position!}
-      easing={this.props.easing}
-      animationDuration={this.props.animationDuration}
-      backdropColor={this.props.backdropColor}
-      currentStep={this.props.currentStep}
-      maskOffset={this.props.maskOffset}
-      borderRadius={this.props.borderRadius}
-      dismissOnPress={this.props.dismissOnPress}
-    />
-  )
+  renderMask = () => {
+    const position = this.state.position!;
+    const size = this.state.size!;
+    const ratio = Dimensions.get('screen').width / 360;
+    position.x = position.x * ratio;
+    position.y = position.y * ratio;
+    size.x = size.x * ratio;
+    size.y = size.y * ratio;
+    return (
+      <SvgMask
+        style={styles.overlayContainer}
+        size={size}
+        position={position}
+        easing={this.props.easing}
+        animationDuration={this.props.animationDuration}
+        backdropColor={this.props.backdropColor}
+        currentStep={this.props.currentStep}
+        maskOffset={this.props.maskOffset}
+        borderRadius={this.props.borderRadius}
+        dismissOnPress={this.props.dismissOnPress}
+      />
+    )
+  }
 
   renderTooltip() {
     const { tooltipComponent: TooltipComponent, visible } = this.props
