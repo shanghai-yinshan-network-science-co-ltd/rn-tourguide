@@ -261,8 +261,8 @@ export class Modal extends React.Component<ModalProps, State> {
   }
 
   renderMask = () => {
-    const position = this.state.position!;
-    const size = this.state.size!;
+    const position:any = this.state.position!;
+    const size:any = this.state.size!;
     const ratio = Dimensions.get('screen').width / 360;
     position.x = position.x * ratio;
     position.y = position.y * ratio;
@@ -280,6 +280,7 @@ export class Modal extends React.Component<ModalProps, State> {
         maskOffset={this.props.maskOffset}
         borderRadius={this.props.borderRadius}
         dismissOnPress={this.props.dismissOnPress}
+        stop={this.props.stop}
       />
     )
   }

@@ -8,7 +8,7 @@ import {
   StyleProp,
   View,
   ViewStyle,
-  TouchableWithoutFeedback,
+  Pressable,
   ScaledSize,
 } from 'react-native'
 import Svg, { PathProps } from 'react-native-svg'
@@ -186,13 +186,12 @@ export class SvgMask extends Component<Props, State> {
       return null
     }
     const { dismissOnPress, stop } = this.props
-    const Wrapper: any = dismissOnPress ? TouchableWithoutFeedback : View
+    const Wrapper: any = dismissOnPress ? Pressable : View
 
     return (
       <Wrapper
         style={this.props.style}
         onLayout={this.handleLayout}
-        pointerEvents='none'
         onPress={dismissOnPress ? stop : undefined}
       >
         <Svg
