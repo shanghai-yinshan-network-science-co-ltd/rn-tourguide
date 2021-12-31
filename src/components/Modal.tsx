@@ -286,7 +286,7 @@ export class Modal extends React.Component<ModalProps, State> {
           dismissOnPress={this.props.dismissOnPress}
           stop={this.props.stop}
         />
-        <Pressable onPress={this.props.currentStep?.onPress} style={{position:'absolute',top:position.y,left:position.x,width:size.x,height:size.y,backgroundColor:'red'}}/>
+        <Pressable onPress={this.props.currentStep?.onPress} style={{position:'absolute',top:position.y,left:position.x,width:size.x,height:size.y}}/>
       </>
 
     )
