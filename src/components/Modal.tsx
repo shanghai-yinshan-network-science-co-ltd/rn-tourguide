@@ -9,7 +9,8 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-  Dimensions
+  Dimensions,
+  Pressable
 } from 'react-native'
 import { BorderRadiusObject, IStep, Labels, ValueXY } from '../types'
 import styles, { MARGIN } from './style'
@@ -264,24 +265,30 @@ export class Modal extends React.Component<ModalProps, State> {
     const position:any = this.state.position!;
     const size:any = this.state.size!;
     const ratio = Dimensions.get('screen').width / 360;
-    position.x = position.x * ratio;
-    position.y = position.y * ratio;
-    size.x = size.x * ratio;
-    size.y = size.y * ratio;
     return (
-      <SvgMask
-        style={styles.overlayContainer}
-        size={size}
-        position={position}
-        easing={this.props.easing}
-        animationDuration={this.props.animationDuration}
-        backdropColor={this.props.backdropColor}
-        currentStep={this.props.currentStep}
-        maskOffset={this.props.maskOffset}
-        borderRadius={this.props.borderRadius}
-        dismissOnPress={this.props.dismissOnPress}
-        stop={this.props.stop}
-      />
+      <>
+        <SvgMask
+          style={styles.overlayContainer}
+          size={{
+            y:size.y * ratio,
+            x:size.x * ratio,
+          }}
+          position={{
+            x:position.x * ratio,
+            y:position.y * ratio
+          }}
+          easing={this.props.easing}
+          animationDuration={this.props.animationDuration}
+          backdropColor={this.props.backdropColor}
+          currentStep={this.props.currentStep}
+          maskOffset={this.props.maskOffset}
+          borderRadius={this.props.borderRadius}
+          dismissOnPress={this.props.dismissOnPress}
+          stop={this.props.stop}
+        />
+        <Pressable onPress={this.props.currentStep?.onPress} style={{position:'absolute',top:position.y,left:position.x,width:size.x,height:size.y,backgroundColor:'red'}}/>
+      </>
+
     )
   }
 

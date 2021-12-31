@@ -16,6 +16,7 @@ export interface TourGuideZoneProps {
   keepTooltipPosition?: boolean
   tooltipBottomOffset?: number
   borderRadiusObject?: BorderRadiusObject
+  onPress?:()=>void
 }
 
 export const TourGuideZone = ({
@@ -30,6 +31,7 @@ export const TourGuideZone = ({
   keepTooltipPosition,
   tooltipBottomOffset,
   borderRadiusObject,
+  onPress
 }: TourGuideZoneProps) => {
   if (!isTourGuide) {
     return <>{children}</>
@@ -47,6 +49,7 @@ export const TourGuideZone = ({
         keepTooltipPosition,
         tooltipBottomOffset,
         borderRadiusObject,
+        onPress
       }}
     >
       <Wrapper {...{ style }}>{children}</Wrapper>
