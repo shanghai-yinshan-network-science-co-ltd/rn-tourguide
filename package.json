@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/xcarpentier/rn-tourguide.git"
   },
+   "files": [
+    "src"
+  ],
   "keywords": [
     "react-native",
     "react-native-joyride",
