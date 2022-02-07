@@ -2,7 +2,7 @@
   "name": "rn-tourguide",
   "version": "3.3.0-rc2",
   "description": "Make an interactive step by step tour guide for your react-native app (a rewrite of react-native-copilot)",
-  "private": false,
+  "main": "index.js",
   "scripts": {
     "start": "yarn config:dev && expo start -c",
     "start:web": "yarn config:dev && expo start -c -w",
