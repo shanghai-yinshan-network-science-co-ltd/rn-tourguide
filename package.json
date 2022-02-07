@@ -6,7 +6,8 @@
     "type": "git",
     "url": "git+https://github.com/xcarpentier/rn-tourguide.git"
   },
-   "files": [
+  "main":"src/index.ts",
+  "files": [
     "src"
   ],
   "keywords": [
