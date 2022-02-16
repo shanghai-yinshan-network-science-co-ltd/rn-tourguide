@@ -23,6 +23,7 @@ interface Props {
   animationDuration?: number
   backdropColor: string
   dismissOnPress?: boolean
+  onPress?: () => void
   maskOffset?: number
   borderRadius?: number
   currentStep?: IStep
@@ -185,14 +186,21 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop } = this.props
+    const { dismissOnPress, stop, onPress } = this.props
     const Wrapper: any = dismissOnPress ? Pressable : View
 
     return (
       <Wrapper
         style={this.props.style}
         onLayout={this.handleLayout}
-        onPress={dismissOnPress ? stop : undefined}
+        onPress={dismissOnPress ? () => {
+          if (onPress) {
+            onPress()
+          }
+          if (stop) {
+            stop()
+          }
+        } : undefined}
       >
         <Svg
           pointerEvents='none'

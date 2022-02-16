@@ -35,6 +35,7 @@ export interface ModalProps {
   backdropColor: string
   labels: Labels
   dismissOnPress?: boolean
+  onPress?: () => void
   easing(value: number): number
   stop(): void
   next(): void
@@ -284,6 +285,7 @@ export class Modal extends React.Component<ModalProps, State> {
           maskOffset={this.props.maskOffset}
           borderRadius={this.props.borderRadius}
           dismissOnPress={this.props.dismissOnPress}
+          onPress={this.props.onPress}
           stop={this.props.stop}
         />
         <Pressable onPress={this.props.currentStep?.onPress} style={{position:'absolute',top:position.y,left:position.x,width:size.x,height:size.y}}/>
